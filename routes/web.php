@@ -13,14 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-// Area pubblica - FrontOffice
-Route::get('/', function () {
-    return view('welcome');
-});
 // Rotte per autenticazione
 Auth::routes();
-
 
 // Area privata - BackOffice
 /*
@@ -37,6 +31,11 @@ Route::prefix("admin")->namespace("admin")->middleware("auth")->group(function()
     Route::resource("categories", "CategoryController");
     Route::resource("tags", "TagController");
 });
+
+// Area pubblica - FrontOffice
+Route::get("{any?}", function() {
+    return view("welcome");
+})->where("any", ".*");
 
 // php artisan route:list
 // Route::get('/home', 'HomeController@index')->name('home'); (riga 35)
