@@ -33,6 +33,9 @@ Route::prefix("admin")->namespace("admin")->middleware("auth")->group(function()
 });
 
 // Area pubblica - FrontOffice
+/*
+    Qualsiasi rotta che non viene soddisfatta dalle precedenti viene reindirizzata nella nostra welcome.blade.php
+*/
 Route::get("{any?}", function() {
     return view("welcome");
 })->where("any", ".*");
