@@ -23,9 +23,9 @@
 <style lang="scss">
 // Con scoped non funzionano le proprietà al di fuori di div#app
     * {
-        margin: 0;
+        // margin: 0;
         padding: 0;
-        font-size: 100%;
+        font-size: 110%;
         box-sizing: border-box;
     }
 </style>
