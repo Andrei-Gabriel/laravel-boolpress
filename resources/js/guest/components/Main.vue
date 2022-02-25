@@ -1,28 +1,13 @@
 <template>
     <main>
-        <h3>Nome posts</h3>
-        <ul>
-            <li v-for="post in posts" :key="post.id">
-                {{post.title}}
-            </li>
-        </ul>
+        <h2>Inizio main</h2>
+        <router-view></router-view>
     </main>
 </template>
 
 <script>
     export default {
         name: "Main",
-        data() {
-            return {
-                posts: [],
-            }
-        },
-        created() {
-            axios.get("/api/posts")
-                .then( (response) => {
-                    this.posts = response.data;
-                })
-        }
     }
 </script>
 
