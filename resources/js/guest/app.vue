@@ -24,8 +24,8 @@
 // Con scoped non funzionano le proprietà al di fuori di div#app
     * {
         // margin: 0;
-        padding: 0;
-        font-size: 110%;
+        // padding: 0;
+        font-size: 100%;
         box-sizing: border-box;
     }
 </style>

@@ -20,7 +20,7 @@
 <style lang="scss" scoped>
     ul {
         display: flex;
-        gap: 40px;
-        padding-left: 40px;
+        gap: 30px;
+        // padding-left: 40px;
     }
 </style>
