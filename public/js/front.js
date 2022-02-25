@@ -2098,7 +2098,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  font-size: 100%;\n  box-sizing: border-box;\n}", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n}", ""]);
 
 // exports
 

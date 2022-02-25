@@ -9,8 +9,14 @@ use App\Post;
 class PostController extends Controller
 {
     public function index(){
+        // Tutti i post
         // $posts = Post::all();
-        $posts = Post::where("published", true)->get();
+
+        // I post pubblicati
+        $posts = Post::where("published", true)->with(["category", "tags"])->get();
+        // al singolare perché relazione una a molti, al plurale perché relazione molti a molti
+        // Per conferma nome funzione in app/Post.php
+        // with(["category", "tags"])
         return response()->json($posts);
     }
 }
