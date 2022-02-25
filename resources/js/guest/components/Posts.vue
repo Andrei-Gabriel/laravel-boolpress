@@ -2,7 +2,16 @@
     <section>
         <h3>Lista posts</h3>
         <ul>
-            <li v-for="post in posts" :key="post.id">{{post.title}}</li>
+            <li v-for="post in posts" :key="post.id">
+                <span><strong>{{post.title}}</strong></span><br>
+                <span v-if="post.category">Categoria: {{post.category.name}}</span>
+                <div v-if="post.tags.length > 0">
+                    <span>Tags:</span>
+                    <ul>
+                        <li v-for="tag in post.tags" :kay="tag.id">{{tag.name}}</li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </section>
 </template>
