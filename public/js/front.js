@@ -2031,6 +2031,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Posts",
   data: function data() {
@@ -3560,7 +3562,21 @@ var render = function () {
       "ul",
       _vm._l(_vm.posts, function (post) {
         return _c("li", { key: post.id }, [
-          _c("span", [_c("strong", [_vm._v(_vm._s(post.title))])]),
+          _c(
+            "span",
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: { name: "single-post", params: { slug: post.slug } },
+                  },
+                },
+                [_vm._v(_vm._s(post.title))]
+              ),
+            ],
+            1
+          ),
           _c("br"),
           _vm._v(" "),
           post.category
