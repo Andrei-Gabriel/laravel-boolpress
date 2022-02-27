@@ -1,0 +1,38 @@
+<template>
+    <article>
+        <h3>{{category.name}}</h3>
+
+        <ul v-if="category.posts.length > 0">
+            <li><strong>Post Associati</strong></li>
+            <li v-for="post in category.posts" :key="post.id">
+                <router-link :to="{name: 'single-post', params: {slug: post.slug}}">{{post.title}}</router-link>
+                <!-- {{post.title}} -->
+            </li>
+        </ul>
+        <span v-else>Nessun post associato</span>
+    </article>
+</template>
+
+<script>
+    export default {
+        name: "SingleCategory",
+        data() {
+            return {
+                category: {}
+            }
+        },
+        created() {
+            axios.get(`/api/categories/${this.$route.params.slugCat}`)
+                .then((response) => {
+                    this.category = response.data;
+                })
+                .catch(() => {
+                    this.$router.push({name: 'page-404'});
+                });
+        }
+    }
+</script>
+
+<style>
+
+</style>
