@@ -2145,6 +2145,11 @@ __webpack_require__.r(__webpack_exports__);
     // localhost:8000/api/posts/{slug}
     axios.get("/api/posts/".concat(this.$route.params.slug)).then(function (response) {
       _this.post = response.data;
+    })["catch"](function (error) {
+      // Redirect alla pagina 404
+      _this.$router.push({
+        name: "page-404"
+      });
     });
   }
 });

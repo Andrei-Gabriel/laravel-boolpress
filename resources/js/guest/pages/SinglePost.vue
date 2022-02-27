@@ -18,6 +18,9 @@
             axios.get(`/api/posts/${this.$route.params.slug}`)
                 .then((response) => {
                     this.post = (response.data);
+                }).catch((error) => {
+                    // Redirect alla pagina 404
+                    this.$router.push({name: "page-404"})
                 })
         }
     }
