@@ -9,7 +9,7 @@
                 <!-- {{post.title}} -->
             </li>
         </ul>
-        <span v-else>Nessun post associato</span>
+        <h4 v-else>Nessun post associato</h4>
     </article>
 </template>
 

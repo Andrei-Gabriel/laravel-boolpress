@@ -3906,7 +3906,7 @@ var render = function () {
           ],
           2
         )
-      : _c("span", [_vm._v("Nessun post associato")]),
+      : _c("h4", [_vm._v("Nessun post associato")]),
   ])
 }
 var staticRenderFns = [
