@@ -55,7 +55,8 @@
             </div>
 
             <div class="message" style="padding: 10px;">
-                @yield('message')
+                {{-- @yield('message') --}}
+                <h2>Pagina 404 modificata</h2>
             </div>
         </div>
     </body>
