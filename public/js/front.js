@@ -2191,6 +2191,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/api/categories/".concat(this.$route.params.slugCat)).then(function (response) {
       _this.category = response.data;
+      console.log(_this.category);
     })["catch"](function () {
       _this.$router.push({
         name: 'page-404'
@@ -3876,7 +3877,7 @@ var render = function () {
   return _c("article", [
     _c("h3", [_vm._v(_vm._s(_vm.category.name))]),
     _vm._v(" "),
-    _vm.category.posts.length > 0
+    _vm.category && _vm.category.posts && _vm.category.posts.length > 0
       ? _c(
           "ul",
           [
