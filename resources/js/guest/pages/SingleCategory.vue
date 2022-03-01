@@ -25,7 +25,6 @@
             axios.get(`/api/categories/${this.$route.params.slugCat}`)
                 .then((response) => {
                     this.category = response.data;
-                    console.log(this.category);
                 })
                 .catch(() => {
                     this.$router.push({name: 'page-404'});

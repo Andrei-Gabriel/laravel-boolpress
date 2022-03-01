@@ -2191,7 +2191,6 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/api/categories/".concat(this.$route.params.slugCat)).then(function (response) {
       _this.category = response.data;
-      console.log(_this.category);
     })["catch"](function () {
       _this.$router.push({
         name: 'page-404'
