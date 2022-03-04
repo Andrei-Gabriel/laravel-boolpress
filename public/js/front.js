@@ -2217,11 +2217,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   data: function data() {
     return {
-      post: {}
+      post: {},
+      formData: {
+        name: "",
+        content: ""
+      }
     };
   },
   created: function created() {
@@ -3938,7 +3950,62 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", [_c("h3", [_vm._v(_vm._s(_vm.post.title))])])
+  return _c("article", [
+    _c("h3", [_vm._v(_vm._s(_vm.post.title))]),
+    _vm._v(" "),
+    _c("div", [
+      _c("h3", [_vm._v("Lascia un commento")]),
+      _vm._v(" "),
+      _c("form", { attrs: { action: "" } }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.formData.name,
+              expression: "formData.name",
+            },
+          ],
+          attrs: { type: "text", id: "name", placeholder: "Inserisci un nome" },
+          domProps: { value: _vm.formData.name },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.formData, "name", $event.target.value)
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.formData.content,
+              expression: "formData.content",
+            },
+          ],
+          staticStyle: { display: "block" },
+          attrs: { name: "content", id: "content", rows: "10" },
+          domProps: { value: _vm.formData.content },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.formData, "content", $event.target.value)
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c("button", { attrs: { type: "submit" } }, [
+          _vm._v("Aggiungi un commento"),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
