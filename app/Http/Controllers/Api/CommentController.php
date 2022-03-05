@@ -15,7 +15,9 @@ class CommentController extends Controller
 
         // Creazione del commento
         $newComment = new Comment();
-        $newComment->name = $data["name"];
+        if(!empty($data["name"])){
+            $newComment->name = $data["name"];
+        }
         $newComment->content = $data["content"];
         $newComment->post_id = $data["post_id"];
         $newComment->save();
