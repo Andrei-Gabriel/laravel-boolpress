@@ -2232,19 +2232,33 @@ __webpack_require__.r(__webpack_exports__);
       post: {},
       formData: {
         name: "",
-        content: ""
+        content: "",
+        post_id: null
       }
     };
   },
+  methods: {
+    addComment: function addComment() {
+      var _this = this;
+
+      // api/comments
+      axios.post("/api/comments", this.formData).then(function (response) {
+        _this.formData.name = "";
+        _this.formData.content = "";
+        alert("Commento in fase di approvazione");
+      });
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     // localhost:8000/api/posts/{slug}
     axios.get("/api/posts/".concat(this.$route.params.slug)).then(function (response) {
-      _this.post = response.data;
+      _this2.post = response.data;
+      _this2.formData.post_id = _this2.post.id;
     })["catch"](function (error) {
       // Redirect alla pagina 404
-      _this.$router.push({
+      _this2.$router.push({
         name: "page-404"
       });
     });
@@ -3956,54 +3970,70 @@ var render = function () {
     _c("div", [
       _c("h3", [_vm._v("Lascia un commento")]),
       _vm._v(" "),
-      _c("form", { attrs: { action: "" } }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formData.name,
-              expression: "formData.name",
-            },
-          ],
-          attrs: { type: "text", id: "name", placeholder: "Inserisci un nome" },
-          domProps: { value: _vm.formData.name },
+      _c(
+        "form",
+        {
+          attrs: { action: "" },
           on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.formData, "name", $event.target.value)
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.addComment()
             },
           },
-        }),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formData.content,
-              expression: "formData.content",
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.formData.name,
+                expression: "formData.name",
+              },
+            ],
+            attrs: {
+              type: "text",
+              id: "name",
+              placeholder: "Inserisci un nome",
             },
-          ],
-          staticStyle: { display: "block" },
-          attrs: { name: "content", id: "content", rows: "10" },
-          domProps: { value: _vm.formData.content },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.formData, "content", $event.target.value)
+            domProps: { value: _vm.formData.name },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.formData, "name", $event.target.value)
+              },
             },
-          },
-        }),
-        _vm._v(" "),
-        _c("button", { attrs: { type: "submit" } }, [
-          _vm._v("Aggiungi un commento"),
-        ]),
-      ]),
+          }),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.formData.content,
+                expression: "formData.content",
+              },
+            ],
+            staticStyle: { display: "block" },
+            attrs: { name: "content", id: "content", rows: "10" },
+            domProps: { value: _vm.formData.content },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.formData, "content", $event.target.value)
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("button", { attrs: { type: "submit" } }, [
+            _vm._v("Aggiungi un commento"),
+          ]),
+        ]
+      ),
     ]),
   ])
 }
