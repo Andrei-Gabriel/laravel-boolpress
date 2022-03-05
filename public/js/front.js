@@ -2225,6 +2225,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   data: function data() {
@@ -2234,7 +2241,8 @@ __webpack_require__.r(__webpack_exports__);
         name: "",
         content: "",
         post_id: null
-      }
+      },
+      formErrors: {}
     };
   },
   methods: {
@@ -2246,6 +2254,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.formData.name = "";
         _this.formData.content = "";
         alert("Commento in fase di approvazione");
+      })["catch"](function (error) {
+        // Handle error
+        _this.formErrors = error.response.data.errors;
       });
     }
   },
@@ -4028,6 +4039,28 @@ var render = function () {
               },
             },
           }),
+          _vm._v(" "),
+          _vm.formErrors.content
+            ? _c(
+                "div",
+                { staticStyle: { "background-color": "red", color: "white" } },
+                [
+                  _c(
+                    "ul",
+                    _vm._l(_vm.formErrors.content, function (error, index) {
+                      return _c("li", { key: index }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(error) +
+                            "\n                    "
+                        ),
+                      ])
+                    }),
+                    0
+                  ),
+                ]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _c("button", { attrs: { type: "submit" } }, [
             _vm._v("Aggiungi un commento"),

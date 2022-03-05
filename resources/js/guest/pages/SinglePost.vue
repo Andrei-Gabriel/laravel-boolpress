@@ -7,6 +7,13 @@
             <form action="" @submit.prevent="addComment()">
                 <input type="text" id="name" placeholder="Inserisci un nome" v-model="formData.name">
                 <textarea name="content" id="content" rows="10" v-model="formData.content" style="display: block;"></textarea>
+                <div v-if="formErrors.content" style="background-color: red; color: white;">
+                    <ul>
+                        <li v-for="(error, index) in formErrors.content" :key="index">
+                            {{error}}
+                        </li>
+                    </ul>
+                </div>
                 <button type="submit">Aggiungi un commento</button>
             </form>
         </div>
@@ -23,18 +30,21 @@
                     name: "",
                     content: "",
                     post_id: null,
-                }
+                },
+                formErrors: {}
             }
         },
         methods: {
             addComment() {
                 // api/comments
-                axios.post(`/api/comments`, this.formData)
-                    .then((response) => {
+                axios.post(`/api/comments`, this.formData).then((response) => {
                         this.formData.name = "";
                         this.formData.content = "";
                         alert("Commento in fase di approvazione");
-                    })
+                    }).catch((error) => {
+                    // Handle error
+                    this.formErrors = error.response.data.errors;
+                })
             }
         },
         created() {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Comment;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -12,6 +13,18 @@ class CommentController extends Controller
         $data = $request->all();
 
         // Validazione
+        $validator = Validator::make($data, [
+            'name' => 'nullable|string|max:50',
+            'body' => 'string|required',
+            'post_id' => 'exist:post.id'
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json([
+                "success" => false,
+                "errors" => $validator->errors(),
+            ], 400);
+        }
 
         // Creazione del commento
         $newComment = new Comment();
