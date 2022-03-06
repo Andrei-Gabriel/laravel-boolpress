@@ -52,7 +52,13 @@
                                                         Approvato
                                                     @endif
                                                 </td>
-                                                <td>Cancella</td>
+                                                <td>
+                                                    <form action="{{route("comments.destroy", $comment->id)}}" method="POST">
+                                                        @csrf
+                                                        @method("DELETE")
+                                                        <button type="submit" class="btn btn-danger">Cancella</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
