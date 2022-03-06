@@ -37268,7 +37268,10 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // npm run watch
+
+
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'ckeditor4'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 /***/ }),
 

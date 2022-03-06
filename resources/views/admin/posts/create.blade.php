@@ -66,4 +66,11 @@
             <button type="submit" class="btn btn-primary px-4 py-2">Crea</button>
         </form>
     </div>
+
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor 4
+        // instance, using default configuration.
+        // * in questo caso content perché la textarea aveva già questo id *
+        CKEDITOR.replace('content');
+    </script>
 @endsection

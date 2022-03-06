@@ -2241,6 +2241,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   data: function data() {
@@ -3987,13 +3988,14 @@ var render = function () {
   return _c("article", [
     _c("h3", [_vm._v(_vm._s(_vm.post.title))]),
     _vm._v(" "),
+    _c("p", { domProps: { innerHTML: _vm._s(_vm.post.content) } }),
+    _vm._v(" "),
     _c("div", [
       _c("h3", [_vm._v("Lascia un commento")]),
       _vm._v(" "),
       _c(
         "form",
         {
-          attrs: { action: "" },
           on: {
             submit: function ($event) {
               $event.preventDefault()

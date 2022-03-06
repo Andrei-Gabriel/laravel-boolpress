@@ -2,9 +2,10 @@
     <article>
         <h3>{{post.title}}</h3>
         <!-- <img :src="`/storage/${post.image}`" :alt="post.title"> -->
+        <p v-html="post.content"></p>
         <div>
             <h3>Lascia un commento</h3>
-            <form action="" @submit.prevent="addComment()">
+            <form @submit.prevent="addComment()">
                 <input type="text" id="name" placeholder="Inserisci un nome" v-model="formData.name">
                 <textarea name="content" id="content" rows="10" v-model="formData.content" style="display: block;"></textarea>
                 <div v-show="formErrors.content" style="background-color: red; color: white;">
