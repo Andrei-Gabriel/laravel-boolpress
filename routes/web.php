@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Rotte per autenticazione
-Auth::routes();
+Auth::routes(["verify" => true]);
 
 // Area privata - BackOffice
 /*
@@ -24,7 +24,7 @@ Auth::routes();
         proteggere da autenticazione: middleware("auth")
     group(function(){}); perché creiamo un gruppo che ha queste info di base
 */
-Route::prefix("admin")->namespace("admin")->middleware("auth")->group(function(){
+Route::prefix("admin")->namespace("admin")->middleware("verified")->group(function(){
     // Qui aggiungiamo le rotte di una risorsa a cui devone essere applicate le tre regole (riga 33)
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource("posts", "PostController");
