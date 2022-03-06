@@ -30,7 +30,7 @@
                                     <span class="badge badge-warning py-1 px-2">No tag</span>
                                 @endif
                             </div>
-                            <span>{{$post->content}}</span>
+                            <span>{!!$post->content!!}</span>
                         </div>
                         @if (count($post->comments) > 0)
                             <div>
