@@ -40,7 +40,18 @@
                                         @foreach ($post->comments as $comment)
                                             <tr>
                                                 <th>{{$comment->content}}</th>
-                                                <td>Approva</td>
+                                                <td>
+                                                    @if(!$comment->approved)
+                                                        <form action="{{route("comments.update", $comment->id)}}" method="POST">
+                                                            @csrf
+                                                            @method("PATCH")
+                                                            <input type="hidden" name="approved" value="1">
+                                                            <button type="submit" class="btn btn-primary">Approva</button>
+                                                        </form>
+                                                    @else
+                                                        Approvato
+                                                    @endif
+                                                </td>
                                                 <td>Cancella</td>
                                             </tr>
                                         @endforeach

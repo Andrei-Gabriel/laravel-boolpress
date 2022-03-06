@@ -30,6 +30,7 @@ Route::prefix("admin")->namespace("admin")->middleware("auth")->group(function()
     Route::resource("posts", "PostController");
     Route::resource("categories", "CategoryController");
     Route::resource("tags", "TagController");
+    Route::patch("comments/{comment}", "CommentController@update")->name("comments.update");
 });
 
 // Area pubblica - FrontOffice
