@@ -21,7 +21,9 @@ class PostController extends Controller
     }
 
     public function show($slug){
-        $post = Post::where("slug", $slug)->with(["category", "tags"])->first();
+        $post = Post::where("slug", $slug)->with(["category", "tags", "comments" => function($query){
+            $query->where('approved', '1');
+        }])->first();
         
         // Gestione 404 per i path come: /posts/*
         if (empty($post)) {

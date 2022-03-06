@@ -19,12 +19,12 @@ class CommentController extends Controller
             'post_id' => 'exist:post.id'
         ]);
  
-        if ($validator->fails()) {
-            return response()->json([
-                "success" => false,
-                "errors" => $validator->errors(),
-            ], 400);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json([
+        //         "success" => false,
+        //         "errors" => $validator->errors(),
+        //     ], 400);
+        // }
 
         // Creazione del commento
         $newComment = new Comment();

@@ -65,9 +65,11 @@
                                   </table>
                             </div>
                         @endif
-                        <figure class="figure">
-                            <img src="{{$post->image}}" class="figure-img img-fluid rounded" alt="...">
-                        </figure>
+                        @if($post->image)
+                            <figure class="figure">
+                                <img src="{{asset("storage/{$post->image}")}}" class="figure-img img-fluid rounded" alt="{{$post->title}}">
+                            </figure>
+                        @endif
                         <div class="container p-0 d-flex flex-row mt-3">
                             <a href="{{route("posts.edit", $post->id)}}"><button type="button" class="btn btn-warning mr-3">Modifica</button></a>
                             <form action="{{route("posts.destroy", $post->id)}}" method="POST">

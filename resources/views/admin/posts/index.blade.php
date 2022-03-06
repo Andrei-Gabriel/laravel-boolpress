@@ -23,7 +23,7 @@
         <tbody>
             @foreach ($posts as $post)
                 <tr>
-                    <th scope="row">{{$post->id}}</th>
+                    <th id="{{$post->id}}">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
                     <td>{{$post->slug}}</td>
                     @if ($post->published)

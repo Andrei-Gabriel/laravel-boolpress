@@ -7,7 +7,7 @@
             <form action="" @submit.prevent="addComment()">
                 <input type="text" id="name" placeholder="Inserisci un nome" v-model="formData.name">
                 <textarea name="content" id="content" rows="10" v-model="formData.content" style="display: block;"></textarea>
-                <div v-if="formErrors.content" style="background-color: red; color: white;">
+                <div v-show="formErrors.content" style="background-color: red; color: white;">
                     <ul>
                         <li v-for="(error, index) in formErrors.content" :key="index">
                             {{error}}
@@ -16,6 +16,15 @@
                 </div>
                 <button type="submit">Aggiungi un commento</button>
             </form>
+        </div>
+        <div>
+            <h3>Commenti</h3>
+            <ul>
+                <li v-for="comment in post.comments" :key="comment.id">
+                    <span><strong>{{comment.name}}</strong></span>
+                    <p>{{comment.content}}</p>
+                </li>
+            </ul>
         </div>
     </article>
 </template>

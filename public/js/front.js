@@ -2232,6 +2232,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   data: function data() {
@@ -4040,32 +4049,56 @@ var render = function () {
             },
           }),
           _vm._v(" "),
-          _vm.formErrors.content
-            ? _c(
-                "div",
-                { staticStyle: { "background-color": "red", color: "white" } },
-                [
-                  _c(
-                    "ul",
-                    _vm._l(_vm.formErrors.content, function (error, index) {
-                      return _c("li", { key: index }, [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(error) +
-                            "\n                    "
-                        ),
-                      ])
-                    }),
-                    0
-                  ),
-                ]
-              )
-            : _vm._e(),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.formErrors.content,
+                  expression: "formErrors.content",
+                },
+              ],
+              staticStyle: { "background-color": "red", color: "white" },
+            },
+            [
+              _c(
+                "ul",
+                _vm._l(_vm.formErrors.content, function (error, index) {
+                  return _c("li", { key: index }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(error) +
+                        "\n                    "
+                    ),
+                  ])
+                }),
+                0
+              ),
+            ]
+          ),
           _vm._v(" "),
           _c("button", { attrs: { type: "submit" } }, [
             _vm._v("Aggiungi un commento"),
           ]),
         ]
+      ),
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("h3", [_vm._v("Commenti")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.post.comments, function (comment) {
+          return _c("li", { key: comment.id }, [
+            _c("span", [_c("strong", [_vm._v(_vm._s(comment.name))])]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(comment.content))]),
+          ])
+        }),
+        0
       ),
     ]),
   ])
